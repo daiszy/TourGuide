@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>讲解员的订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<link rel="stylesheet" type="text/css" href="css/orderFormList.css">-->
+		<link rel="stylesheet" href="css/GuideOrders.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<link rel="stylesheet" type="text/css" href="css/navigate.css" />
+		<script type="text/javascript" src="js/navigationbar.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<<script type="text/javascript" src="js/GuideOrders.js"></script>
+
+	</head>
+
+	<body>
+		<div data-role="page" style="background-color: #f1f4fb;">
+
+			<div data-role="header" id="header" class="header">
+				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
+					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="djjshow()">待讲解</label>
+					<div id="djjxian" style="position: relative;background-color: white;height: 5px;width: 40%;margin: auto;margin-top: 3px;"></div>
+				</div>
+				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
+					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="ywcshow()">已完成</label>
+					<div id="ywcxian" style="position: relative;background-color: white;height: 5px;width: 40%;margin: auto;margin-top: 3px;"></div>
+				</div>
+			</div>
+
+			<div data-role="main" class="ui-content" style="width: 100%;padding: 0px;">
+				<div id="djjpage">
+					<div class="list" id="OrderUl">
+						
+					</div>
+					
+					<div class="list" id="OrderPin">
+						
+					</div>
+					
+				</div>
+
+				<div id="ywcpage">
+					
+					<div class="list" id="finishOrder">
+						
+					</div>
+					
+					<div class="list" id="finishPin">
+						
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+		<div style="height: 50px;">
+
+		</div>
+		<script>
+			$(function($) {
+				addNavigate(4);
+			});
+		</script>
+		<script>
+			$(function($) {
+				$("#ywcxian").hide();
+				$("#ywcpage").hide();
+			});
+
+			function djjshow() {
+				$("#ywcxian").hide(300);
+				$("#ywcpage").hide(300);
+				$("#djjxian").show(300);
+				$("#djjpage").show(300);
+			}
+
+			function ywcshow() {
+				$("#djjxian").hide(300);
+				$("#djjpage").hide(300);
+				$("#ywcxian").show(300);
+				$("#ywcpage").show(300);
+			}
+		</script>
+
+	</body>
+
+</html>
