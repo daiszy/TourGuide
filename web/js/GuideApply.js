@@ -1,5 +1,5 @@
 $(document).ready(function() {
-				
+	
 	$(window).bind('resize load', function() {
 		$(".perheader").height($(window).width() * 0.5);
 		$(".squareImg").width($(".squareImg").height());		
@@ -9,9 +9,7 @@ $(document).ready(function() {
 	var Phone = "18829027144";
 	setperinfo(Phone);		
 			
-	$("#visitor_img").click(function() {
-		$("#btn_file").click();		
-	});
+	$("#openId").val(openId);
 });			
 
 function setperinfo(Phone){
@@ -38,7 +36,7 @@ function setperinfo(Phone){
 }
 function selectPersonImg()
 {
-	document.getElementById("btn_file1").click();
+	document.getElementById("btn_file").click();
 }
 var image = "";
 function selectImage(file) {

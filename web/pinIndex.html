@@ -5,6 +5,18 @@
 		<title>拼团首页</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
 		<link rel="stylesheet" href="css/pinIndex.css" />		
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script>
+			function fastPin()
+			{
+				if(vistPhone == "undefined" || vistPhone == openId){
+					alert("您还未注册，请注册！");
+					window.location.href = "register.html";
+				}else{
+					window.location.href='fastPinConfirm.html';
+				}			
+			}
+		</script>
 	</head>
 	<body>
 		<div class="content">
@@ -15,7 +27,7 @@
 			</div>
 			<div class="buttonSelect">
 				<button id="Select" onclick="window.location.href='pindan.html'">开始选团</button>
-				<button id="Pin" onclick="window.location.href='fastPinConfirm.html'">快捷拼团</button>
+				<button id="Pin" onclick="fastPin()">快捷拼团</button>
 			</div>
 		</div>
 	</body>

@@ -61,7 +61,7 @@ html,body
 }
 .mainContent img
 {
-	width: 8%;
+	width: 23px;
 	margin-left: 4%;
 	margin-top: 1%;
 }
@@ -69,30 +69,29 @@ html,body
 {
 	display: inline-block;
 	vertical-align: top;
-	margin-top: 2%;
+	margin-top: 4px;
 }
 .mainContent p
 {
-	margin-left: 30%;
+	margin-left: 26%;
 	font-size: 0.7em;
 }
 .mainContent select
 {
-	background: url(../img/4-1请选择时间底图.png) no-repeat;
-	background-size:100% ;
+	background-color: #ffffff;
 	-moz-appearance: none;
     -webkit-appearance:none;
     appearance:none;
     border: none;
 	position: absolute;
 	margin-left: 6%;
-	height: 7%;
-	width: 55%;
-	padding-left: 16%;
-	border-radius: 6%;
-	margin-top: 1%;
-	padding-bottom: 6%;
-	padding-top: 1%;
+	height: 50px;
+	width: 200px;
+	padding-left: 60px;
+	border-radius: 14px;
+	margin-top: 5px;
+	padding-bottom: 0px;
+	/*padding-top: 5px;*/
 }
 #radio
 {
@@ -108,14 +107,13 @@ html,body
 }
 .sexDiv,.languageDiv
 {
-	margin-top: 5px;
+	margin-top: 20px;
 }
 #sex
 {
 	display: inline-block;
 	/*position: absolute;*/
 	margin-left: 7%;
-	margin-top: 1%;
 	position: relative;
 	top: -10px;
 }
@@ -124,7 +122,7 @@ html,body
 	display: inline-block;
 	/*position: absolute;*/
 	margin-left: 7%;
-	margin-top: 1%;
+	margin-top: 4px;
 	position: relative;
 	top: -10px;
 }
@@ -133,7 +131,7 @@ html,body
 	height:30px;
 	margin-top: 6px;
 	border-bottom: 2px solid gainsboro;
-	padding-bottom: 3px;
+	padding-bottom: 6px;
 	margin-left: 7%;
 }
 
@@ -142,6 +140,7 @@ html,body
 	width: 200px;
 	margin-left: 12%;
 	margin-top: 2px;
+	margin-bottom: 4px;
 	height: 20px;
 }
 #VisitNum
@@ -187,7 +186,6 @@ html,body
 .confirmButton
 {
 	background-color: #2792fa;
-	background-size:100% ;
 	border: none;
 	margin-top: 4px;
 	height: 40px;

@@ -33,6 +33,14 @@
 			.ddxq-yyd tr{
 				border-bottom: 1px solid #CCCCCC;
 			}
+			.button{
+				background-color: #fb6a5a;
+				width:100%;
+				border-radius:20px;
+				color: white; 
+				height: 45px;
+				margin-top: 20px;
+			}
 		</style>
 	</head>
 
@@ -83,31 +91,31 @@
 							<table class="selector ddxq-yyd" style="font-size: 16px;width: 90%;margin: auto;">
 								<tr >
 									<td class="tgrayfont">付款时间</td>
-									<td><span id="payTime">2017-09-10 12:23:41</span></td>
+									<td><span id="payTime"></span></td>
 								</tr>
-								<tr >
+								<tr>
 									<td class="tgrayfont">讲解员</td>
-									<td><span id="guideName">王鑫涛</span></td>
+									<td><span id="guideName"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">性别</td>
-									<td><span id="guideSex">女</span></td>
+									<td><span id="guideSex"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">年龄</td>
-									<td><span id="guideAge">24</span></td>
+									<td><span id="guideAge"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">星级</td>
-									<td><span id="guideLevel">1</span></td>
+									<td><span id="guideLevel"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">语种</td>
-									<td><span id="guideLanguage">英文</span></td>
+									<td><span id="guideLanguage"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">联系电话</td>
-									<td><span id="guidePhone">13152654785</span></td>
+									<td><span id="guidePhone"></span></td>
 								</tr>
 							</table>
 
@@ -130,9 +138,11 @@
 				    </div> 				           		
    				</div>
 				
-				
-				<div style="width: 100%;background-color: white;height: 160px;padding: 5px;">
-
+				<div id="to">
+					
+				</div>
+				<div id="bottomInfo" style="width: 100%;background-color: white;height: 160px;padding: 5px;">
+	
 						<div style="height: 150px;width: 100%;">
 							<div style="width: 120px;height: 100%;float: right;background-color: white; ">
 								<div  style="width: 110px;margin: auto;">

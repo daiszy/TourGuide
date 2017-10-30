@@ -5,12 +5,14 @@ var orderId = GetUrlem("orderId");
 var longitude;
 var latitude;
 
+var vName;
+
 $(function($){
 	setData();
 });
 
 function setData(){
-
+	
 	$.ajax({
 		type:"post",
 		url:HOST+"/getDetailOrderInfo.do",
@@ -31,7 +33,11 @@ function setData(){
 				if(data[0].guidePhone!=undefined)
 				{
 					setGuidegData(data[0].guidePhone);
-				}				
+					
+				}else{
+					$("#guideName").html("待分配");
+					$(".hide1").css('display','none');
+				}
 			}				
 		}
 	});
@@ -41,19 +47,6 @@ function setData(){
 function setNormalData(data){
 	
 	$("#scenicName").html(data.scenicName);
-	
-	if(data.orderState=="待评价"){
-		$("#orderState").attr("src","img/icon-dpj.png");			
-	}
-	if(data.orderState=="已完成"){
-		$("#orderState").attr("src","img/icon-ywc.png");
-	}
-	if(data.orderState=="待付款"){
-		$("#orderState").attr("src","img/icon-dfk.png");
-	}
-	if(data.orderState=="待游览"){	
-		$("#orderState").attr("src","img/icon-dyl.png");
-	}
 	
 	var str = data.visitTime;
 	var tmp = str.split(':');
@@ -81,6 +74,27 @@ function setNormalData(data){
 		
 	$("#money").html(data.money);
 	
+	//根据游客手机号获取游客姓名
+	var url = HOST+"/getVisitorInfoWithPhone.do";
+	$.ajax({
+		type:"post",
+		url:url,
+		async:false,
+		data:{phone:data.visitorPhone},
+		datatype:"JSON",
+		error:function()
+		{
+			alert("显示个人信息Request error!");
+		},
+		success:function(data)
+		{
+//			alert(JSON.stringify(data)!="{}");
+			if(JSON.stringify(data)!="{}"){				
+				vName = data.name;
+			}
+		}
+	});
+	
 	if(data.orderState=="待付款"){
 		$("#payTime").html("未付款");
 	}else{
@@ -92,9 +106,59 @@ function setNormalData(data){
 	//经纬度
 	longitude = data.longitude;
 	latitude = data.latitude;
+	
+	if(data.orderState=="待评价"){
+		$("#orderState").attr("src","img/icon-dpj.png");
+		$("#bottomInfo").css('display','none');
+		
+		var str = '<div><button class="button" visitNum="'+data.visitNum+'" guidePhone="'+data.guidePhone+'" time="'+time+'" scenicName="'+data.scenicName+'" contactPhone="'+data.visitorPhone+'" contactName="'+vName+'" onclick="goPing($(this))">去评价</button></div>';
+		$("#to").append(str);
+	}
+	if(data.orderState=="已完成"){
+		$("#orderState").attr("src","img/icon-ywc.png");
+		$("#bottomInfo").css('display','none');
+	}
+	if(data.orderState=="待付款"){
+		$("#orderState").attr("src","img/icon-dfk.png");
+		$("#bottomInfo").css('display','none');
+		
+		var str = '<div><button class="button" visitNum="'+data.visitNum+'" guidePhone="'+data.guidePhone+'" time="'+time+'" scenicName="'+data.scenicName+'" contactPhone="'+data.visitorPhone+'" contactName="'+vName+'" onclick="goPay($(this))">去付款</button></div>';
+		$("#to").append(str);
+	}
+	if(data.orderState=="待游览"){	
+		$("#orderState").attr("src","img/icon-dyl.png");
+	}
+	
+	
 
 }
 
+//去付款
+function goPay(This)
+{
+	var guidePhone = This.attr("guidePhone");
+	var time = This.attr("time");
+	var scenicName = This.attr("scenicName");
+	var contactPhone = This.attr("contactPhone");
+	var contactName = This.attr("contactName");
+	var visitNum = This.attr("visitNum");
+	
+	if(type == "拼团单"){
+		window.location.href = "pinConfirm.html?scenicName="+scenicName+
+		"&visitNum="+visitNum+"&orderId="+orderId;
+	}else if(type == "预约单"){
+		window.location.href = "confirmOrder.html?guidePhone="+guidePhone+
+	"&time="+time+"&scenicName="+scenicName+"&contactPhone="+contactPhone+
+	"&contactName="+contactName+"&visitNum="+visitNum+"&type="+type;
+	}
+	
+}
+
+//去评价
+function goPing(This)
+{
+	
+}
 
 function getTime1ByIOS(time1)
 {

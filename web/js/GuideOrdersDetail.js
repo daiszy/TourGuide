@@ -19,8 +19,8 @@ function setData(){
 		type:"post",
 		url:HOST+"/getDetailOrderInfo.do",
 		async:true,
-		data:{orderID:"4dcc3bfd9ec847a3a184be9c0f93b930"},
-//		data:{orderID:orderId},
+//		data:{orderID:"4dcc3bfd9ec847a3a184be9c0f93b930"},
+		data:{orderID:orderId},
 		datatype:"JSON",
 		error:function()
 		{
@@ -127,7 +127,7 @@ function produce()
 {
 	$("#qrcode").empty();
 	
-	jQuery('#qrcode').qrcode(utf16to8("1da7bd5f33bb450a8f6abb418a38ccde"));
+	jQuery('#qrcode').qrcode(utf16to8(orderId));
 	$("#popupDialog").popup('open');
 }
 

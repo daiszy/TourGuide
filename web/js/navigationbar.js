@@ -21,8 +21,14 @@ function addNavigate(n){
 
 function per()
 {
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html";
+	}else{
+		window.location.href="personalHome.html";
+	}
 	
-	window.location.href="personalHome.html";
 }
 
 function index()

@@ -6,6 +6,7 @@ var scenicName = GetUrlem("scenicName");
 var contactPhone = GetUrlem("contactPhone");
 var contactName = GetUrlem("contactName");
 
+var time = GetUrlem("time");
 
 $(function(){
 	
@@ -17,9 +18,15 @@ $(function(){
 
 function setOrderInfo() {
 	//设置预约信息
-	$("#OrderTime").html(visitDate + " " + visitTime);
+	
+	if(time == null){
+		$("#OrderTime").html(visitDate + " " + visitTime);
+	}else{
+		$("#OrderTime").html(time);
+	}
+		
 	$("#OrderNum").html(visitNum);
-	$("#ScenicName").html(scenicName);
+	$("#GuideScenic1").html(scenicName);
 	$("#ContactPhoneConfirm").html(contactPhone);
 	$("#ContactNameConfirm").html(contactName);
 }
@@ -29,7 +36,6 @@ function setGuideInfo()
 {
 	$("#GuidePhone").html(guidePhone);
 	var Url = HOST + "/getDetailGuideInfoByPhone.do";
-	
 	$.ajax({
 		type: "post",
 		url: Url,

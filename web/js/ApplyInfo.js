@@ -1,4 +1,5 @@
 var Phone = GetUrlem("Phone");
+//var Phone = "18829027144";
 
 $(document).ready(function() {
 				
@@ -7,14 +8,11 @@ $(document).ready(function() {
 		$(".squareImg").width($(".squareImg").height());		
 	});
 	
-	
-//	vistPhone = '18191762572';
-//	alert("vistPhone="+Phone);
 	setperinfo(Phone);
 		
 		
 //测试性别图片
-	sex="男"
+	/*sex="男"
 	var element = document.getElementById('seximg');
 
 	if(sex=="男"){
@@ -24,7 +22,7 @@ $(document).ready(function() {
 	else{
 		element.src="img/woman.png";
 
-	}
+	}*/
 	
 });			
 
@@ -45,7 +43,7 @@ function setperinfo(Phone){
 		{
 //			alert(JSON.stringify(data));
 			$.each(data, function(i, item) {
-				$("#apply_name").html(item.name);
+				$("#guide_info_name").html(item.name);
 				$("#apply_tel").html(item.phone);
 				//$("#apply_sex").html(item.sex);
 				addsex(item.sex);
@@ -58,7 +56,8 @@ function setperinfo(Phone){
 				var patt1 = new RegExp("wx.qlogo.cn");
 				if(!patt1.test(img)){
 					img = HOST + img;
-				}			
+				}		
+	
 				$("#visitor_img").attr("src", img);
 				
 				//0-未审核  2-挂靠景区未审核 1-已审核
@@ -101,7 +100,7 @@ function isRegist() {
 }
 
 function addsex(sex){
-    sex="男"
+ 
 	var element = document.getElementById('seximg');
 
 	if(sex=="男"){

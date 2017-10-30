@@ -1,5 +1,5 @@
 //phone从前一个页面获取
-var phone = GetUrlem("guidePhone")
+var phone = GetUrlem("guidePhone");
 var scenicNo = "";
 
 $(function(){

@@ -27,7 +27,7 @@ function getData(Url,ulid){
 }
 function setList(data, ulid){
 	$.each(data, function(i,n) {
-		
+	
 		var time = n.visitTime.substring(5,16);
 		
 		//当前时间
@@ -44,7 +44,7 @@ function setList(data, ulid){
 		'<p style="color: #000000;font-size: 12px;margin-top: 28px;">'+
 		'<span class="lTime">'+leftTime+'</span>小时</p><p class="ltime">剩余时间</p>'+
 		'</div><div class="selector" style="width: calc(100% - 90px);height: 100%;float: left;">'+
-		'<div class="detailInfoDiv"><a><img src="img/bt-xiangxin.png" class="detailInfoImg" orderId="'+n.orderID+'" onclick="detailInfo($(this))"/>'+
+		'<div class="detailInfoDiv"><a><img src="img/bt-xiangxin.png" class="detailInfoImg" orderId="'+n.orderID+'" type="'+n.type+'" onclick="detailInfo($(this))"/>'+
 		'</a></div><div class="NumFee"><table class="selector" style="text-align: center;width: 100%;margin-top: 25px;">'+
 		'<tr class="infoSpan"><td>&nbsp;参观人数&nbsp;</td>'+
 		'<td>&nbsp;支付费用&nbsp;</td></tr><tr class="info">'+
@@ -59,7 +59,8 @@ function setList(data, ulid){
 function detailInfo(This)
 {
 	var orderId = This.attr("orderId");
-	window.location = "GuideOrdersDetailUI.html?orderId="+orderId;
+	var type = This.attr("type");
+	window.location = "GuideOrdersDetailUI.html?orderId="+orderId+"&type="+type;
 }
 
 //获取当前日期时间“yyyy-MM-dd HH:MM:SS”

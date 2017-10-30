@@ -1,4 +1,4 @@
-//window["HOST"]="http://localhost:8080/TourGuide";
+//window["HOST"]="http://10.102.28.242:8080/TourGuide";
 //window["HOST"]="http://cps.xaut.edu.cn/TourGuide";
 window["HOST"]="http://zhoudaoly.com/TourGuide";
 

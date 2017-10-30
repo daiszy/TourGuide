@@ -1,5 +1,5 @@
-//var Phone = getPhone();
-Phone = "18829027144";
+var Phone = getPhone();
+//Phone = "18829027144";
 
 $(function($){
 	
@@ -8,8 +8,8 @@ $(function($){
 		signIN(Phone);
 	});
 	
-//	$("#openId").val(openId);
-	$("#openId").val("o_tM3wI3bVTCR_hLp6PTGHtKuumY");
+	$("#openId").val(openId);
+//	$("#openId").val("o_tM3wI3bVTCR_hLp6PTGHtKuumY");
 });
 
 
@@ -33,7 +33,8 @@ function setperinfo(Phone){
 			//alert("显示个人信息success!");
 			document.getElementById("person_info_tel").value = data.phone;
 			document.getElementById("person_info_name").value = data.name;
-			$("#GuideHeadImg").attr("src",HOST+data.image);
+			$("#GuideHeadImg").attr("src",HOST+'/'+data.image);
+			
 			}
 		}
 	});
@@ -57,6 +58,7 @@ function selectImage(file)
 		
 	}
 	reader.readAsDataURL(file.files[0]);
+	
 	image0 = $("#btn_file").val();
 	
 //	changePerHeadImg();

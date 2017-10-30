@@ -16,19 +16,22 @@ $(function($) {
 	
 });
 
-$('.bgw').click(function() {
+/*$('.bgw').click(function() {
 	$('.bgw').removeClass('hdxz');
 	$(this).addClass('hdxz');
 
 	//		var id = $(this).attr('id');
 	//		alert(id);
-});
+});*/
 
 function qbon() {
 	$(".orderywc").show(300);
 	$(".orderdyl").show(300);
 	$(".orderdfk").show(300);
 	$(".orderdpj").show(300);
+	
+	$('.bgw').removeClass('hdxz');
+	$("#btqb").addClass("hdxz");
 }
 
 function ywcon() {
@@ -36,6 +39,9 @@ function ywcon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btywc").addClass("hdxz");
 }
 
 function dylon() {
@@ -43,6 +49,9 @@ function dylon() {
 	$(".orderdyl").show(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdyl").addClass("hdxz");
 }
 
 function yfkon() {
@@ -50,6 +59,9 @@ function yfkon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").show(300);
 	$(".orderdpj").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdfk").addClass("hdxz");
 }
 
 function dpjon() {
@@ -57,12 +69,14 @@ function dpjon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").show(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdpj").addClass("hdxz");
 }
 
 //获取用户的所有订单
 function getOrderList()
 {
-
     var url = HOST+"/getAllOrders.do";
 	$.ajax({
 		type:"post",

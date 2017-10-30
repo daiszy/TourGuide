@@ -18,13 +18,26 @@ function changeTab1()
 }
 function changeTab2()
 {
-	window.location.href = "releaseOrder.html";
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html";
+	}else{
+		window.location.href = "releaseOrder.html";
+	}	
 }
 
 //点击立即预约
 function orderGuide(phone)
 {
-	window.location.href = "isOrder.html?guidePhone="+phone;
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html";
+	}else{
+		window.location.href = "isOrder.html?guidePhone="+phone;	
+	}
+
 }
 //点击筛选按钮
 function screenButton()

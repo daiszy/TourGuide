@@ -1,13 +1,13 @@
 var isGuider = false;
 var Phone = vistPhone;
-//Phone = '15029319152';
+//Phone = '18829027144';
 
 $(function($){
 	//根据手机号，从服务器获取游客的信息
 	setperinfo(Phone);
 	
 	//当前订单
-	currentOrder(Phone);	
+	currentOrder(Phone);
 	
 	$("#jiangjie").click(function(){
 		//判断是否是讲解员，并设置信息
@@ -46,7 +46,7 @@ function isGuiderF(Phone)
 		datatype:"JSON",
 		error:function()
 		{
-			alert("显示讲解员订单信息Request error!");
+			alert("显示讲解员信息Request error!");
 		},
 		success:function(data)
 		{
@@ -60,7 +60,8 @@ function isGuiderF(Phone)
 			}
 			//不是讲解员
 			else{
-				alert("您还不是讲解员！");
+				$("#jiangJie").css('display','none');
+				alert("您还不是讲解员！");			
 				return false;
 			}
 		}
@@ -92,7 +93,7 @@ function setperinfo(Phone){
 			if(!patt1.test(img)){
 				img = HOST + img;
 			}
-			
+		
 			$("#imgheight").attr("src",img);
 
 			}
@@ -120,34 +121,41 @@ function currentOrder(Phone)
 		async:true,
 		data:{visitorPhone:Phone},
 		datatype:"JSON",	
-		error:function(data){
+		error:function(data){			
 			alert("获取待游览订单失败");
 		},
 		success:function(data){
-			//参观时间
-			var timeDay = data.vtime.substring(5,16);
-			//当前时间
-			var nowTime = getNowFormatDate();
-			//剩余时间
-			var leftTime =getTimeDiff(nowTime,data.vtime) ;
-			type = data.type;
-			orderId = data.orderID;
-			latitude = data.weidu;
-			longitude = data.jingdu;
+			if(JSON.stringify(data) != '0')
+			{
+				//参观时间
+				var timeDay = data.vtime.substring(5,16);
+				//当前时间
+				var nowTime = getNowFormatDate();
+				//剩余时间
+				var leftTime =getTimeDiff(nowTime,data.vtime) ;
+				type = data.type;
+				orderId = data.orderID;
+				latitude = data.weidu;
+				longitude = data.jingdu;
+				
+				$("#ScenicName").html(data.nsme);
+				$("#VisitedTime").html(timeDay);
+				$("#name").html(data.gname);
+				$("#sex").html(data.gsex);
+				$("#age").html(data.gage);
+				$("#language").html(data.glanguage);
+				$("#phone").html(data.gphone);
+				$("#VisitedNum").html(data.vnum);
+				$("#GuideFee").html(data.gfee);
+				$("#leftTime").html(leftTime);
+				
+				//加载地图
+				loadMap(latitude,longitude);
+			}else{
+				alert("您当前无待游览订单");
+				$("#sName").css('display','none');
+			}
 			
-			$("#ScenicName").html(data.nsme);
-			$("#VisitedTime").html(timeDay);
-			$("#name").html(data.gname);
-			$("#sex").html(data.gsex);
-			$("#age").html(data.gage);
-			$("#language").html(data.glanguage);
-			$("#phone").html(data.gphone);
-			$("#VisitedNum").html(data.vnum);
-			$("#GuideFee").html(data.gfee);
-			$("#leftTime").html(leftTime);
-			
-			//加载地图
-			loadMap(latitude,longitude);
 		}
 		
 	});
@@ -371,24 +379,32 @@ function setGuideInfo(Phone){
 		},
 		success:function(data)
 		{
-			//参观时间
-			GtimeDay = data.vtime.substring(5,16);
-			//当前时间
-			var nowTime = getNowFormatDate();
-			//剩余时间
-			GleftTime =getTimeDiff(nowTime,data.vtime) ;
-			GorderId = data.orderId;
-			type = data.type;
-				
-			$("#GScenicName").html(data.sname);
-			$("#GVisitTime").html(GtimeDay);
-			$("#GVisitNum").html(data.vnum);
-			$("#GFee").html(data.gfee);
-			$("#GLeftTime").html(GleftTime);
-				
-			GvisitNum = data.vnum;
-			Gfee = data.gfee;
-			GscenicName = data.sname;
+			if(JSON.stringify(data) != '[]')
+			{
+				//参观时间
+				GtimeDay = data.vtime.substring(5,16);
+				//当前时间
+				var nowTime = getNowFormatDate();
+				//剩余时间
+				GleftTime =getTimeDiff(nowTime,data.vtime) ;
+				GorderId = data.orderId;
+				type = data.type;
+					
+				$("#GScenicName").html(data.sname);
+				$("#GVisitTime").html(GtimeDay);
+				$("#GVisitNum").html(data.vnum);
+				$("#GFee").html(data.gfee);
+				$("#GLeftTime").html(GleftTime);
+					
+				GvisitNum = data.vnum;
+				Gfee = data.gfee;
+				GscenicName = data.sname;
+			}else{
+				alert("您当前无待讲解订单");
+				$("#jiangJie").css('display','none');
+			}
+			
+			
 		}
 	});
 }
